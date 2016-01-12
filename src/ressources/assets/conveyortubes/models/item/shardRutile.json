@@ -1,0 +1,6 @@
+{
+    "parent":"conveyortubes:item/standart_item",
+    "textures": {
+        "layer0":"conveyortubes:items/shardRutile"
+    }
+}
