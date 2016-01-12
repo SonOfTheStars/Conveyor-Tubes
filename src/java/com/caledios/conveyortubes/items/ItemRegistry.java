@@ -1,4 +1,4 @@
-package com.SOTS.conveyortubes.items;
+package com.caledios.conveyortubes.items;
 
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.GameRegistry;

@@ -1,9 +1,9 @@
-package com.SOTS.conveyortubes.proxies;
+package com.caledios.conveyortubes.proxies;
 
-import com.SOTS.conveyortubes.block.BlockRegistry;
-import com.SOTS.conveyortubes.items.ItemRegistry;
-import com.SOTS.conveyortubes.render.items.ItemRenderRegister;
-import com.SOTS.conveyortubes.world.CTWorldGen;
+import com.caledios.conveyortubes.block.BlockRegistry;
+import com.caledios.conveyortubes.items.ItemRegistry;
+import com.caledios.conveyortubes.render.items.ItemRenderRegister;
+import com.caledios.conveyortubes.world.CTWorldGen;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;

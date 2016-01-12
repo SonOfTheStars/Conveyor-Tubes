@@ -1,14 +1,18 @@
-package com.SOTS.conveyortubes.render.items;
+package com.caledios.conveyortubes.render.items;
 
-import com.SOTS.conveyortubes.ModConveyorTubes;
-import com.SOTS.conveyortubes.items.ItemRegistry;
-import com.SOTS.conveyortubes.util.ClientUtils;
+import com.caledios.conveyortubes.ModConveyorTubes;
+import com.caledios.conveyortubes.block.BlockRegistry;
+import com.caledios.conveyortubes.block.pipe.BlockCTPipe;
+import com.caledios.conveyortubes.items.ItemRegistry;
+import com.caledios.conveyortubes.util.ClientUtils;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelBakeEvent;
+import net.minecraftforge.client.model.ModelLoader;
 
 public final class ItemRenderRegister {
 	
@@ -20,6 +24,7 @@ public final class ItemRenderRegister {
 	public static void registerItemrender(){
 		reg(ItemRegistry.itemOreShard, 0, "shardRutile");
 		reg(ItemRegistry.itemOreShard, 1, "shardVanadinite");
+		regOBJ(BlockRegistry.pipeBase, BlockCTPipe.name);
 	}
 	
 	/**
@@ -44,5 +49,8 @@ public final class ItemRenderRegister {
 	public static void preInit(){
 		ModelBakery.addVariantName(ItemRegistry.itemOreShard, "conveyortubes:shardRutile", "conveyortubes:shardVanadinite");
 		//ModelBakery.registerItemVariants(ItemRegistry.itemOreShard, ClientUtils.getResource(modid + ":oreShard.shardRutile"), ClientUtils.getResource(modid + ":oreShard.shardVanadinite"));
+	}
+	private static void regOBJ(Block toReg, String loc){
+		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(toReg), 0, new ModelResourceLocation(modid.toLowerCase() + ":" + loc, "inventory" ));
 	}
 }

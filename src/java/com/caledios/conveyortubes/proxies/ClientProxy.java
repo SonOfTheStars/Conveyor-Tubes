@@ -1,8 +1,10 @@
-package com.SOTS.conveyortubes.proxies;
+package com.caledios.conveyortubes.proxies;
 
-import com.SOTS.conveyortubes.render.blocks.BlockRenderRegister;
-import com.SOTS.conveyortubes.render.items.ItemRenderRegister;
+import com.caledios.conveyortubes.ModConveyorTubes;
+import com.caledios.conveyortubes.render.blocks.BlockRenderRegister;
+import com.caledios.conveyortubes.render.items.ItemRenderRegister;
 
+import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -15,8 +17,9 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void preInit(FMLPreInitializationEvent e) {
 		super.preInit(e);
-		
+		OBJLoader.instance.addDomain(ModConveyorTubes.MODID.toLowerCase());
 		ItemRenderRegister.preInit();
+		
 	}
 	
 	/**

@@ -1,4 +1,4 @@
-package com.SOTS.conveyortubes.util;
+package com.caledios.conveyortubes.util;
 
 public enum EPipeState {
 	STATE_OFFLINE,

@@ -1,8 +1,8 @@
-package com.SOTS.conveyortubes.world;
+package com.caledios.conveyortubes.world;
 
 import java.util.Random;
 
-import com.SOTS.conveyortubes.block.BlockRegistry;
+import com.caledios.conveyortubes.block.BlockRegistry;
 
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;

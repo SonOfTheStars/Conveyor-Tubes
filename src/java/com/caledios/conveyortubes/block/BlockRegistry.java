@@ -1,6 +1,8 @@
-package com.SOTS.conveyortubes.block;
+package com.caledios.conveyortubes.block;
 
-import com.SOTS.conveyortubes.items.ItemRegistry;
+import com.caledios.conveyortubes.ModConveyorTubes;
+import com.caledios.conveyortubes.block.pipe.BlockCTPipe;
+import com.caledios.conveyortubes.items.ItemRegistry;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -10,6 +12,7 @@ public final class BlockRegistry {
 	
 	public static Block oreRutile;
 	public static Block oreVanadinite;
+	public static Block pipeBase;
 	
 	
 	/**
@@ -18,6 +21,7 @@ public final class BlockRegistry {
 	public static void createBlocks(){
 		GameRegistry.registerBlock(oreRutile=new BlockRutileOre("oreRutile", ItemRegistry.itemOreShard), "oreRutile");
 		GameRegistry.registerBlock(oreVanadinite=new BlockVanadiniteOre("oreVanadinite", ItemRegistry.itemOreShard), "oreVanadinite");
+		GameRegistry.registerBlock(pipeBase=new BlockCTPipe(), "ConveyorTube");
 	}
 
 }

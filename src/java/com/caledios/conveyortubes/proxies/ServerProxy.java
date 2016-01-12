@@ -1,4 +1,4 @@
-package com.SOTS.conveyortubes.proxies;
+package com.caledios.conveyortubes.proxies;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;

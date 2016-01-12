@@ -1,4 +1,4 @@
-package com.SOTS.conveyortubes;
+package com.caledios.conveyortubes;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-import com.SOTS.conveyortubes.proxies.CommonProxy;
+import com.caledios.conveyortubes.proxies.CommonProxy;
 
 
 @Mod(modid = ModConveyorTubes.MODID, name = ModConveyorTubes.MODNAME, version = ModConveyorTubes.VERSION)
@@ -23,7 +23,7 @@ public class ModConveyorTubes {
     public static ModConveyorTubes instance = new ModConveyorTubes();
     
     //Proxy Storage Object. Value Determined by @SidedProxy
-    @SidedProxy(clientSide="com.SOTS.conveyortubes.proxies.ClientProxy", serverSide="com.SOTS.conveyortubes.proxies.ServerProxy")
+    @SidedProxy(clientSide="com.caledios.conveyortubes.proxies.ClientProxy", serverSide="com.caledios.conveyortubes.proxies.ServerProxy")
     public static CommonProxy proxy;
 
     @EventHandler
