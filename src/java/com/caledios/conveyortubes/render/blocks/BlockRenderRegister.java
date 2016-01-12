@@ -9,6 +9,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import com.caledios.conveyortubes.ModConveyorTubes;
 import com.caledios.conveyortubes.block.BlockRegistry;
 import com.caledios.conveyortubes.block.pipe.BlockCTPipe;
+import com.caledios.conveyortubes.util.ClientUtils;
 
 public final class BlockRenderRegister {
 	
@@ -28,7 +29,7 @@ public final class BlockRenderRegister {
 	 * @param toReg Block to be registered
 	 */
 	private static void reg(Block toReg){
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
+		ClientUtils.mc().getRenderItem().getItemModelMesher()
 	    .register(Item.getItemFromBlock(toReg), 0, new ModelResourceLocation(modid + ":" + toReg.getUnlocalizedName().substring(5), "inventory"));
 	}
 	
@@ -38,7 +39,7 @@ public final class BlockRenderRegister {
 	 * @param meta Integer defining Metadata of @toReg
 	 */
 	private static void reg(Block toReg, int meta){
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
+		ClientUtils.mc().getRenderItem().getItemModelMesher()
 	    .register(Item.getItemFromBlock(toReg), meta, new ModelResourceLocation(modid + ":" + toReg.getUnlocalizedName().substring(5), "inventory"));
 	}
 	

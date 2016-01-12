@@ -1,11 +1,13 @@
 package com.caledios.conveyortubes.block.pipe;
 
 import java.io.IOException;
+import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,7 +32,7 @@ import com.google.common.collect.Lists;
 
 public class BlockCTPipe extends Block implements ITileEntityProvider{
 	
-	public static final String name = "ConveyorTube";
+	public static final String name = "tube_model";
 	private ExtendedBlockState state = new ExtendedBlockState(this, new IProperty[0], new IUnlistedProperty[]{OBJModel.OBJProperty.instance});
 
 
@@ -39,6 +41,17 @@ public class BlockCTPipe extends Block implements ITileEntityProvider{
 		super(Material.iron);
 		this.setUnlocalizedName(ModConveyorTubes.MODID + ":" + name);
 		this.setCreativeTab(CreativeTabs.tabBlock);
+	}
+	
+	private List<String> checkConnections(IBlockAccess world, BlockPos pos){
+		List<String> connections = Lists.newArrayList("center");
+		if (world.getBlockState(pos.north()) != null && !world.isAirBlock(pos.north())) connections.add("north");
+		if (world.getBlockState(pos.south()) != null && !world.isAirBlock(pos.south())) connections.add("south");
+		if (world.getBlockState(pos.east()) != null && !world.isAirBlock(pos.east())) connections.add("east");
+		if (world.getBlockState(pos.west()) != null && !world.isAirBlock(pos.west())) connections.add("west");
+		if (world.getBlockState(pos.up()) != null && !world.isAirBlock(pos.up())) connections.add("up");
+		if (world.getBlockState(pos.down()) != null && !world.isAirBlock(pos.down())) connections.add("down");
+		return connections;
 	}
 
 	@Override
@@ -57,20 +70,22 @@ public class BlockCTPipe extends Block implements ITileEntityProvider{
 	
 	@Override
 	public IBlockState getExtendedState(IBlockState state, IBlockAccess world, BlockPos pos){
-		TileBasicPipe tileentity = (TileBasicPipe) world.getTileEntity(pos);
-		OBJModel.OBJState retState = new OBJModel.OBJState(tileentity ==null ? Lists.newArrayList(OBJModel.Group.ALL) : tileentity.visible, true);
-		return ((IExtendedBlockState) this.state.getBaseState()).withProperty(OBJModel.OBJProperty.instance, retState);
+		OBJModel.OBJState objState = new OBJModel.OBJState(this.checkConnections(world, pos), true).setIgnoreHidden(true);
+		
 	}
-	
+
+	@Override
+	protected BlockState createBlockState() {
+		return new ExtendedBlockState(this, new IProperty[0], new IUnlistedProperty[]{OBJModel.OBJProperty.instance});
+	}
+
 	@Override
     public boolean hasTileEntity(IBlockState state)
     {
         return true;
     }
 
-	/* (non-Javadoc)
-	 * @see net.minecraft.block.Block#onBlockActivated(net.minecraft.world.World, net.minecraft.util.BlockPos, net.minecraft.block.state.IBlockState, net.minecraft.entity.player.EntityPlayer, net.minecraft.util.EnumFacing, float, float, float)
-	 */
+	/**
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (worldIn.getTileEntity(pos) == null) worldIn.setTileEntity(pos, new TileBasicPipe());
@@ -89,6 +104,6 @@ public class BlockCTPipe extends Block implements ITileEntityProvider{
 		worldIn.markBlockRangeForRenderUpdate(pos, pos);
 		return false;
 	}
-	
+	**/
 	
 }

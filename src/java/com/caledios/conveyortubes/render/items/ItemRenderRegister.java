@@ -31,7 +31,7 @@ public final class ItemRenderRegister {
 	 * @param toReg The Item to register
 	 */
 	private static void reg(Item toReg){
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
+		ClientUtils.mc().getRenderItem().getItemModelMesher()
 		.register(toReg, 0, new ModelResourceLocation(modid + ":" + toReg.getUnlocalizedName().substring(5), "inventory"));
 	}
 	
@@ -41,7 +41,7 @@ public final class ItemRenderRegister {
 	 * @param meta The Metadata of @toReg
 	 */
 	private static void reg(Item toReg, int meta, String file){
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
+		ClientUtils.mc().getRenderItem().getItemModelMesher()
 		.register(toReg, meta, new ModelResourceLocation(modid + ":" + file, "inventory"));
 	}
 	
