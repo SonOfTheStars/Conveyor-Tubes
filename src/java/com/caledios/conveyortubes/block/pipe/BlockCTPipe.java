@@ -86,12 +86,6 @@ public class BlockCTPipe extends Block implements ITileEntityProvider{
 		{
 			model = ModelLoaderRegistry.getMissingModel();
 		}
-		
-		if(worldIn.isRemote)
-		{
-			OBJBakedModel objBaked = (OBJBakedModel)ClientUtils.mc().getBlockRendererDispatcher().getModelFromBlockState(state, worldIn, pos);
-			objBaked.scheduleRebake();
-		}
 		worldIn.markBlockRangeForRenderUpdate(pos, pos);
 		return false;
 	}

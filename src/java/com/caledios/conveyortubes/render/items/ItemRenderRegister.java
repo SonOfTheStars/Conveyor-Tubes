@@ -24,7 +24,6 @@ public final class ItemRenderRegister {
 	public static void registerItemrender(){
 		reg(ItemRegistry.itemOreShard, 0, "shardRutile");
 		reg(ItemRegistry.itemOreShard, 1, "shardVanadinite");
-		regOBJ(BlockRegistry.pipeBase, BlockCTPipe.name);
 	}
 	
 	/**

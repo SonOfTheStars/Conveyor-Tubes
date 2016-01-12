@@ -19,6 +19,7 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent e) {
     	ItemRegistry.createItems();
     	BlockRegistry.createBlocks();
+    	BlockRegistry.createTileEntities();
     }
     
     /**

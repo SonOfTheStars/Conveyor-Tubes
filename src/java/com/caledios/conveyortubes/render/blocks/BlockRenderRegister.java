@@ -20,6 +20,7 @@ public final class BlockRenderRegister {
 	public static void registerBlockRenderer(){
 		reg(BlockRegistry.oreRutile);
 		reg(BlockRegistry.oreVanadinite);
+		regOBJ(BlockRegistry.pipeBase, BlockCTPipe.name);
 	}
 	
 	/**
