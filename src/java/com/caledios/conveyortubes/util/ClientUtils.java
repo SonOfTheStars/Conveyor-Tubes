@@ -5,7 +5,9 @@ import java.util.HashMap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 
 public class ClientUtils {
 	static HashMap<String, ResourceLocation> resourceMap = new HashMap<String, ResourceLocation>(); 
