@@ -45,11 +45,6 @@ public class BlockRutileOre extends Block{
 		return this.meta;
 	}
 
-	@Override
-	public int quantityDropped(IBlockState state, int fortune, Random random) {
-		 if (this.least >= this.most)
-		        return this.least;
-		    return this.least + random.nextInt(this.most - this.least + fortune + 1);
-	}
+	
 
 }

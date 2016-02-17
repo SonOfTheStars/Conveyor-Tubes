@@ -2,7 +2,7 @@ package com.caledios.conveyortubes.render.items;
 
 import com.caledios.conveyortubes.ModConveyorTubes;
 import com.caledios.conveyortubes.block.BlockRegistry;
-import com.caledios.conveyortubes.block.pipe.BlockCTPipe;
+import com.caledios.conveyortubes.block.pipe.BlockBasicPipe;
 import com.caledios.conveyortubes.items.ItemRegistry;
 import com.caledios.conveyortubes.util.ClientUtils;
 

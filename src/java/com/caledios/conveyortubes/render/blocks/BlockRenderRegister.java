@@ -8,7 +8,7 @@ import net.minecraftforge.client.model.ModelLoader;
 
 import com.caledios.conveyortubes.ModConveyorTubes;
 import com.caledios.conveyortubes.block.BlockRegistry;
-import com.caledios.conveyortubes.block.pipe.BlockCTPipe;
+import com.caledios.conveyortubes.block.pipe.BlockBasicPipe;
 import com.caledios.conveyortubes.util.ClientUtils;
 
 public final class BlockRenderRegister {
@@ -21,7 +21,7 @@ public final class BlockRenderRegister {
 	public static void registerBlockRenderer(){
 		reg(BlockRegistry.oreRutile);
 		reg(BlockRegistry.oreVanadinite);
-		regOBJ(BlockRegistry.pipeBase, BlockCTPipe.name);
+		regOBJ(BlockRegistry.pipeBase, BlockBasicPipe.name);
 	}
 	
 	/**
