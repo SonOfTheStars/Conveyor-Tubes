@@ -2,16 +2,17 @@ package com.caledios.conveyortubes.tileentity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
-import net.minecraft.block.Block;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.IBlockAccess;
 
-import com.caledios.conveyortubes.block.pipe.BlockBasicPipe;
+import com.caledios.conveyortubes.transport.TravelingItem;
 import com.caledios.conveyortubes.util.WorldUtil;
 import com.google.common.collect.Lists;
 
@@ -19,6 +20,8 @@ public class TileBasicPipe extends TileEntity{
 	
 	public List<String> visible = new ArrayList<String>();
 	private boolean[] conMatrix = new boolean[6];
+	
+	private final Set<TravelingItem> itemSet = new HashSet<TravelingItem>();
 	
 	public TileBasicPipe(){
 		Arrays.fill(conMatrix, false);
@@ -128,5 +131,66 @@ public class TileBasicPipe extends TileEntity{
 			modifyConMatrix(EnumFacing.DOWN, false);
 		}
 		return connections;
+	}
+	
+	public TileEntity getNeighbourTile(EnumFacing side){
+		return WorldUtil.getAdjacentTile(this, side);
+	}
+	
+	protected boolean injectItemInternal(TravelingItem item, EnumFacing dir, boolean simulate) {
+		if (item.isValid()) {
+			int stuckItems = 0;
+
+			synchronized (itemSet) {
+				for (TravelingItem p : itemSet) {
+					if (p.isStuck()) {
+						stuckItems++;
+
+						if (stuckItems >= 1) {
+							return false;
+						}
+					}
+				}
+
+				if (!simulate) {
+					itemSet.add(item);
+				}
+			}
+
+			if (!simulate) {
+				item.reset(this, dir);
+				item.sendPacket(true);
+			}
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	protected void addItemClientSide(TravelingItem item) {
+		if (!getWorld().isRemote) {
+			return;
+		}
+
+		synchronized (itemSet) {
+			Iterator<TravelingItem> itemIterator = itemSet.iterator();
+			while (itemIterator.hasNext()) {
+				TravelingItem p = itemIterator.next();
+				if (p.id == item.id) {
+					itemIterator.remove();
+					break;
+				}
+			}
+
+			itemSet.add(item);
+		}
+	}
+
+	protected void removeItemClientSide(TravelingItem item) {
+		if (getWorld().isRemote) {
+			synchronized (itemSet) {
+				itemSet.remove(item);
+			}
+		}
 	}
 }
